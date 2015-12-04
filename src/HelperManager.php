@@ -3,6 +3,7 @@
 namespace Elixir\Helper;
 
 use Elixir\DI\ContainerInterface;
+use Elixir\Helper\ContextInterface;
 
 /**
  * @author Cédric Tanghe <ced.tanghe@gmail.com>
@@ -51,5 +52,28 @@ class HelperManager
     public function getContext()
     {
         return $this->context;
+    }
+    
+    /**
+     * @see ContainerInterface::get();
+     */
+    public function get($key, array $options = [], $default = null)
+    {
+        $helper = $this->container->get($key, $options, $default);
+        
+        if($helper instanceof ContextInterface)
+        {
+            $helper->setContext($this->context);
+        }
+        
+        return $helper;
+    }
+    
+    /**
+     * @ignore
+     */
+    public function __call($method, $arguments)
+    {
+        return call_user_func([$this->container, $method], $arguments);
     }
 }

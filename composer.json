@@ -9,9 +9,14 @@
     ],
     "homepage": "https://github.com/cedtanghe/elixir-helper",
     "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/cedtanghe/elixir-di"
+        }
     ],
     "require": {
-        "php": ">=5.4"
+        "php": ">=5.4",
+        "elixir/elixir-di": "*"
     },
     "require-dev": {
         "phpunit/PHPUnit": "~4.0"

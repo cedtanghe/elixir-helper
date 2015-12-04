@@ -1,0 +1,31 @@
+{
+    "name": "elixir/elixir-helper",
+    "description": "Component helper",
+    "version": "1.0.0",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "elixir",
+        "helper"
+    ],
+    "homepage": "https://github.com/cedtanghe/elixir-helper",
+    "repositories": [
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "phpunit/PHPUnit": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elixir\\Helper\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Elixir\\Test\\Helper\\": "tests/"
+        }
+    },
+    "suggest": {
+    }
+}

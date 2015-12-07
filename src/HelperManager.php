@@ -21,6 +21,11 @@ class HelperManager
     protected $container;
     
     /**
+     * @var array 
+     */
+    protected $aliases = [];
+    
+    /**
      * @param ContainerInterface $container
      * @param mixed $context
      */
@@ -28,6 +33,11 @@ class HelperManager
     {
         $this->container = $container;
         $this->context = $context;
+        
+        foreach ($this->aliases as $alias => $original)
+        {
+            $this->container->addAlias($original, $alias);
+        }
     }
     
     /**

@@ -28,11 +28,13 @@ class HelperManager
     /**
      * @param ContainerInterface $container
      * @param mixed $context
+     * @param array $aliases
      */
-    public function __construct(ContainerInterface $container, $context = null) 
+    public function __construct(ContainerInterface $container, $context = null, array $aliases = []) 
     {
         $this->container = $container;
         $this->context = $context;
+        $this->aliases += $aliases;
         
         foreach ($this->aliases as $alias => $original)
         {

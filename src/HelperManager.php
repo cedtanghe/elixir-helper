@@ -3,7 +3,6 @@
 namespace Elixir\Helper;
 
 use Elixir\DI\ContainerInterface;
-use Elixir\Helper\ContextInterface;
 
 /**
  * @author Cédric Tanghe <ced.tanghe@gmail.com>
@@ -14,34 +13,33 @@ class HelperManager
      * @var mixed
      */
     protected $context;
-    
+
     /**
      * @var ContainerInterface
      */
     protected $container;
-    
+
     /**
-     * @var array 
+     * @var array
      */
     protected $aliases = [];
-    
+
     /**
      * @param ContainerInterface $container
-     * @param mixed $context
-     * @param array $aliases
+     * @param mixed              $context
+     * @param array              $aliases
      */
-    public function __construct(ContainerInterface $container, $context = null, array $aliases = []) 
+    public function __construct(ContainerInterface $container, $context = null, array $aliases = [])
     {
         $this->container = $container;
         $this->context = $context;
         $this->aliases += $aliases;
-        
-        foreach ($this->aliases as $alias => $original)
-        {
+
+        foreach ($this->aliases as $alias => $original) {
             $this->container->addAlias($original, $alias);
         }
     }
-    
+
     /**
      * @return ContainerInterface
      */
@@ -49,7 +47,7 @@ class HelperManager
     {
         return $this->container;
     }
-    
+
     /**
      * @param mixed $context
      */
@@ -57,7 +55,7 @@ class HelperManager
     {
         $this->context = $context;
     }
-    
+
     /**
      * @return mixed
      */
@@ -65,22 +63,21 @@ class HelperManager
     {
         return $this->context;
     }
-    
+
     /**
      * @see ContainerInterface::get();
      */
     public function get($key, array $options = [], $default = null)
     {
         $helper = $this->container->get($key, $options, $default);
-        
-        if($helper instanceof ContextInterface)
-        {
+
+        if ($helper instanceof ContextInterface) {
             $helper->setContext($this->context);
         }
-        
+
         return $helper;
     }
-    
+
     /**
      * @ignore
      */

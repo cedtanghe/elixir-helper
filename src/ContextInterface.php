@@ -5,7 +5,7 @@ namespace Elixir\Helper;
 /**
  * @author Cédric Tanghe <ced.tanghe@gmail.com>
  */
-interface ContextInterface 
+interface ContextInterface
 {
     /**
      * @param mixed $context

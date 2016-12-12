@@ -22,7 +22,9 @@ class HelperManager
     /**
      * @var array
      */
-    protected $aliases = [];
+    protected $aliases = [
+        'helper.form' => '\Elixir\Helper\FormHelper',
+    ];
 
     /**
      * @param ContainerInterface $container

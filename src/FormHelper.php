@@ -9,19 +9,33 @@ use Elixir\Form\FormInterface;
  */
 class FormHelper implements HelperInterface
 {
-    public function __construct($theme = 'default')
+    /**
+     * @var callable 
+     */
+    protected $escaper;
+
+    /**
+     * @param array $config
+     */
+    public function __construct(array $config = [])
     {
         // Todo
     }
     
     /**
-     * @param string $theme
-     * @return self
+     * @param callable $value
      */
-    public function withTheme($theme)
+    public function setEscaper(callable $value)
     {
-        // Todo
-        return $this;
+        $this->escaper = $value;
+    }
+    
+    /**
+     * @return callable
+     */
+    public function getEscaper()
+    {
+        return $this->escaper;
     }
     
     /**
